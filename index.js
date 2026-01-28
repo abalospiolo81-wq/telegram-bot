@@ -4,18 +4,17 @@ const path = require("path");
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
-function loadCommands(dir) {
-  fs.readdirSync(dir).forEach(file => {
-    const full = path.join(dir, file);
-    if (fs.statSync(full).isDirectory()) {
-      loadCommands(full);
-    } else if (file.endsWith(".js")) {
-      require(full)(bot);
+const commandsPath = path.join(__dirname, "commands");
+
+if (fs.existsSync(commandsPath)) {
+  fs.readdirSync(commandsPath).forEach(file => {
+    if (file.endsWith(".js")) {
+      require(`./commands/${file}`)(bot);
     }
   });
+} else {
+  console.log("commands folder not found");
 }
-
-loadCommands("./commands");
 
 bot.launch();
 console.log("Bot started");
