@@ -1,12 +1,14 @@
 const { Telegraf } = require("telegraf");
+const fs = require("fs");
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
-// BASIC TEST COMMANDS
-bot.start(ctx => ctx.reply("🔥 Bot LIVE!"));
-bot.help(ctx => ctx.reply("📖 Help is working"));
-bot.command("ping", ctx => ctx.reply("🏓 Pong!"));
+// AUTO LOAD COMMAND FILES
+fs.readdirSync("./commands").forEach((file) => {
+  if (file.endsWith(".js")) {
+    require(`./commands/${file}`)(bot);
+  }
+});
 
-// IMPORTANT
 bot.launch();
 console.log("Bot started");
