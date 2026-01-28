@@ -1,19 +1,17 @@
 const { Telegraf } = require("telegraf");
+const express = require("express");
 
+const app = express();
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
-bot.start(ctx => ctx.reply("🔥 Bot LIVE! Type /help"));
-
-bot.help(ctx => ctx.reply("Try /test"));
-
-bot.command("test", ctx => ctx.reply("✅ Gumagana na!"));
-
-/* AUTO 200 COMMANDS */
-for (let i = 1; i <= 200; i++) {
-  bot.command(`cmd${i}`, ctx => {
-    ctx.reply(`Command #${i} working`);
-  });
-}
-
+bot.on("text", ctx => ctx.reply("🔥 BOT ALIVE"));
 bot.launch();
-console.log("Bot started");
+
+app.get("/", (req, res) => {
+  res.send("Bot is running");
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log("Web server running on " + PORT);
+});
