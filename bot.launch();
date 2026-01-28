@@ -1,0 +1,45 @@
+/* =====================
+   MENU COMMANDS
+===================== */
+bot.command("games", ctx => {
+  ctx.reply(
+`🎮 GAMES MENU
+/dice
+/8ball
+/slots`
+  );
+});
+
+bot.command("fun", ctx => {
+  ctx.reply(
+`😂 FUN MENU
+/joke
+/hug
+/slap`
+  );
+});
+
+bot.command("group", ctx => {
+  ctx.reply(
+`👥 GROUP MENU
+/rules
+/id`
+  );
+});
+
+bot.command("system", ctx => {
+  ctx.reply(
+`⚙️ SYSTEM
+/ping
+/help`
+  );
+});
+
+bot.command("admin", ctx => {
+  ctx.reply(
+`🛡 ADMIN
+/ban
+/warn
+/mute`
+  );
+});
