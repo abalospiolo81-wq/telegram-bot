@@ -1,17 +1,31 @@
-const { Telegraf } = require("telegraf");
-const express = require("express");
+/* =====================
+   AUTO 200+ COMMANDS
+===================== */
 
-const app = express();
-const bot = new Telegraf(process.env.BOT_TOKEN);
+// FUN COMMANDS (50)
+for (let i = 1; i <= 50; i++) {
+  bot.command(`fun${i}`, ctx => {
+    ctx.reply(`😂 Fun command #${i}`);
+  });
+}
 
-bot.on("text", ctx => ctx.reply("🔥 BOT ALIVE"));
-bot.launch();
+// GAMES COMMANDS (50)
+for (let i = 1; i <= 50; i++) {
+  bot.command(`game${i}`, ctx => {
+    ctx.reply(`🎮 Game command #${i}`);
+  });
+}
 
-app.get("/", (req, res) => {
-  res.send("Bot is running");
-});
+// INFO COMMANDS (50)
+for (let i = 1; i <= 50; i++) {
+  bot.command(`info${i}`, ctx => {
+    ctx.reply(`ℹ️ Info command #${i}`);
+  });
+}
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log("Web server running on " + PORT);
-});
+// ADMIN COMMANDS (50)
+for (let i = 1; i <= 50; i++) {
+  bot.command(`admin${i}`, ctx => {
+    ctx.reply(`🛡 Admin command #${i}`);
+  });
+}
