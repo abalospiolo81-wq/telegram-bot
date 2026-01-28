@@ -1,14 +1,14 @@
 const { Telegraf } = require("telegraf");
+const fs = require("fs");
+const path = require("path");
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
-bot.start((ctx) => {
-  ctx.reply("🔥 Bot LIVE na! Pwede sa DM at Groups 😎");
-});
-
-bot.help((ctx) => {
-  ctx.reply("Commands:\n/start\n/help");
+// load all command files
+const commandsPath = path.join(__dirname, "commands");
+fs.readdirSync(commandsPath).forEach(file => {
+  require(`./commands/${file}`)(bot);
 });
 
 bot.launch();
-console.log("Bot running...");
+console.log("🔥 Bot running with full command pack...");
