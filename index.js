@@ -1,35 +1,54 @@
 /* =====================
-   MENUS
+   HELP / MENU
 ===================== */
-bot.command("fun", ctx => ctx.reply("😂 FUN: /fun1 hanggang /fun50"));
-bot.command("games", ctx => ctx.reply("🎮 GAMES: /game1 hanggang /game50"));
-bot.command("admin", ctx => ctx.reply("🛡 ADMIN: /admin1 hanggang /admin50"));
-bot.command("info", ctx => ctx.reply("ℹ️ INFO: /info1 hanggang /info50"));
+bot.help(ctx => {
+  ctx.reply(
+`📌 COMMAND LIST
+
+😂 FUN
+/joke
+/hug
+/slap
+
+🎮 GAMES
+/dice
+/8ball
+/slots
+
+🛡 ADMIN
+/ban
+/mute
+/warn
+
+ℹ️ INFO
+/id
+/ping`
+  );
+});
 
 /* =====================
-   FUN (50)
+   FUN COMMANDS
 ===================== */
-for (let i = 1; i <= 50; i++) {
-  bot.command(`fun${i}`, ctx => ctx.reply(`😂 Fun command #${i}`));
-}
+bot.command("joke", ctx => ctx.reply("😂 Bakit malungkot ang math? Kasi maraming problema."));
+bot.command("hug", ctx => ctx.reply("🤗 Hug sent"));
+bot.command("slap", ctx => ctx.reply("👋 Slap!"));
 
 /* =====================
-   GAMES (50)
+   GAMES COMMANDS
 ===================== */
-for (let i = 1; i <= 50; i++) {
-  bot.command(`game${i}`, ctx => ctx.reply(`🎮 Game command #${i}`));
-}
+bot.command("dice", ctx => ctx.reply("🎲 You rolled: " + Math.ceil(Math.random()*6)));
+bot.command("8ball", ctx => ctx.reply("🎱 Yes."));
+bot.command("slots", ctx => ctx.reply("🎰 | 🍒 | 🍋 | 🔔 |"));
 
 /* =====================
-   ADMIN (50)
+   ADMIN COMMANDS
 ===================== */
-for (let i = 1; i <= 50; i++) {
-  bot.command(`admin${i}`, ctx => ctx.reply(`🛡 Admin command #${i}`));
-}
+bot.command("ban", ctx => ctx.reply("🚫 Ban (demo)"));
+bot.command("mute", ctx => ctx.reply("🔇 Mute (demo)"));
+bot.command("warn", ctx => ctx.reply("⚠️ Warning issued"));
 
 /* =====================
-   INFO (50)
+   INFO COMMANDS
 ===================== */
-for (let i = 1; i <= 50; i++) {
-  bot.command(`info${i}`, ctx => ctx.reply(`ℹ️ Info command #${i}`));
-}
+bot.command("id", ctx => ctx.reply("🆔 Your ID: " + ctx.from.id));
+bot.command("ping", ctx => ctx.reply("🏓 Pong!"));
