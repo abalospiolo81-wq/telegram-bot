@@ -1,36 +1,35 @@
-const { Telegraf } = require("telegraf");
+/* =====================
+   MENUS
+===================== */
+bot.command("fun", ctx => ctx.reply("😂 FUN: /fun1 hanggang /fun50"));
+bot.command("games", ctx => ctx.reply("🎮 GAMES: /game1 hanggang /game50"));
+bot.command("admin", ctx => ctx.reply("🛡 ADMIN: /admin1 hanggang /admin50"));
+bot.command("info", ctx => ctx.reply("ℹ️ INFO: /info1 hanggang /info50"));
 
 /* =====================
-   INIT BOT (MUST BE FIRST)
+   FUN (50)
 ===================== */
-const bot = new Telegraf(process.env.BOT_TOKEN);
-
-/* =====================
-   BASIC
-===================== */
-bot.start(ctx => ctx.reply("🔥 Bot LIVE!"));
-bot.help(ctx => ctx.reply("Try /cmd1 hanggang /cmd200"));
-
-bot.command("test", ctx => ctx.reply("✅ Gumagana na!"));
-
-/* =====================
-   AUTO 200+ COMMANDS
-===================== */
-for (let i = 1; i <= 200; i++) {
-  bot.command(`cmd${i}`, ctx => {
-    ctx.reply(`Command #${i} working`);
-  });
+for (let i = 1; i <= 50; i++) {
+  bot.command(`fun${i}`, ctx => ctx.reply(`😂 Fun command #${i}`));
 }
 
 /* =====================
-   FALLBACK (ANY TEXT)
+   GAMES (50)
 ===================== */
-bot.on("text", ctx => {
-  ctx.reply("🤖 Bot active");
-});
+for (let i = 1; i <= 50; i++) {
+  bot.command(`game${i}`, ctx => ctx.reply(`🎮 Game command #${i}`));
+}
 
 /* =====================
-   LAUNCH
+   ADMIN (50)
 ===================== */
-bot.launch();
-console.log("Bot started successfully");
+for (let i = 1; i <= 50; i++) {
+  bot.command(`admin${i}`, ctx => ctx.reply(`🛡 Admin command #${i}`));
+}
+
+/* =====================
+   INFO (50)
+===================== */
+for (let i = 1; i <= 50; i++) {
+  bot.command(`info${i}`, ctx => ctx.reply(`ℹ️ Info command #${i}`));
+}
